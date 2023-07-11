@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Image</title>
+  <style>
+    /* CSS styles for the images */
+    img {
+      width: 300px;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+  <script>
+    // JavaScript code to fetch and display random images
+
+    // Array of image URLs
+    const images = [
+      "images1.jpg",
+      "images2.jpg"
+    ];
+
+    let clickCount = 0; // Tracks the number of times the "Randomize Page" button is clicked
+
+    // Function to get a random image URL from the array
+    function getRandomImage() {
+      const randomNum = Math.floor(Math.random() * 10) + 1; // Generate a random number between 1 and 10,000,000
+
+      if (randomNum === 1) { // Probability of 1 in 10,000,000
+        return images[1]; // Return the second image
+      } else {
+        return images[0]; // Return the first image
+      }
+    }
+
+    // Function to randomize the page
+    function randomizePage() {
+      clickCount++;
+
+      // Set the source of the image
+      document.getElementById("image").src = getRandomImage();
+
+      if (clickCount === 2) {
+        window.close(); // Close the page after the second click
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Random Image</h1>
+
+  <button onclick="randomizePage()">Randomize Page</button>
+
+  <img id="image" src="" alt="Random Image">
+
+</body>
+</html>
